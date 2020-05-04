@@ -2,12 +2,11 @@ const React = require('react');
 
 class ViewLog extends React.Component {
     render() {
-        let user = this.props.user;
         let log = this.props.log;
         return(
             <>
-                <h3>{log.title}</h3>
                 <p>{log.createdAt.toDateString()}</p>
+                <h3>{log.title}</h3>
                 <p>{log.loggedWeight}</p>
                 <p>{log.difference}</p>
                 <div>
@@ -15,10 +14,12 @@ class ViewLog extends React.Component {
                     <p>{log.notes}</p>
                 </div>
                 <div>
-                    <a href="">Edit</a>
-                    <a href="">Delete</a>
+                    <a href={`/healthly/edit/log/${log._id}`}>Edit</a>
+                    <form action={`/healthly/deleteLog/${log._id}?_method=DELETE`} method="POST">
+                        <input type="submit" value="Delete"/>
+                    </form>
                 </div>
-                <a href={`/healthly/user/${user._id}/home`}>Back</a>
+                <a href={`/healthly/${log.owner}/home`}>Back</a>
             </>
         )
     }

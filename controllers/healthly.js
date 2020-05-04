@@ -31,14 +31,18 @@ router.post('/users', (req, res) => {
 //Show User Profile
 router.get('/user/home', (req, res) => {
     Users.findById(req.body._id, (err, data) => {
-        res.redirect(`/healthly/user/${data._id}/home`);
+        res.redirect(`/healthly/${data._id}/home`);
     });
 });
 
-router.get('/user/:id/home', (req, res) => {
+router.get('/:id/home', (req, res) => {
     Users.findById(req.params.id, (err, data) => {
-        res.render('Home', {
-            user: data
+        let user = data;
+        Logs.find({ owner: user._id }, (err, data) => {
+            res.render('Home', {
+                user: user,
+                logs: data
+            });
         });
     });
 });
@@ -55,18 +59,62 @@ router.get('/:id/new/log', (req, res) => {
 
 //Create Log
 router.put('/:id/logs', (req, res) => {
-    req.body.createdAt = new Date();
-    Users.findByIdAndUpdate(req.params.id, {$push: {logs: req.body}}, (err, data) => {
-        res.redirect(`/healthly/user/${req.params.id}/home`);
+    req.body.owner = req.params.id;
+    Users.findById(req.params.id, (err, data) => {
+        req.body.difference = (req.body.loggedWeight - data.currentWeight);
+        req.body.prevWeight = data.currentWeight;
+        Logs.create(req.body, (err, data) => {
+            res.redirect(`/healthly/${data.owner}/home`);
+        });
     });
 });
 
 //View Log
-router.get('/:id/view/:logIndex', (req, res) => {
-    Users.findById(req.params.id, (err, data) => {
+router.get('/view/:logId', (req, res) => {
+    Logs.findById(req.params.logId, (err, data) => {
         res.render('ViewLog', {
-            user: data,
-            log: data.logs[req.params.logIndex]
+            log: data
+        });
+    });
+});
+
+////Edit Log
+//Show Edit Page
+router.get('/edit/log/:logId', (req, res) => {
+    Logs.findById(req.params.logId, (err, data) => {
+        res.render('EditLog', {
+            log: data
+        });
+    });
+});
+//Update Log
+router.put('/:logId', (req, res) => {
+    let update = req.body;
+    Logs.findById(req.params.logId, (err, data) => {
+        update.difference = update.loggedWeight - data.prevWeight;
+        Logs.findByIdAndUpdate(data._id, {
+            $set: {
+                title: update.title,
+                loggedWeight: update.loggedWeight,
+                notes: update.notes,
+                difference: update.difference
+            }
+        }, (err, data) => {
+            Logs.findById(req.params.logId, (err, data) => {
+                Users.findById(data.owner, (err, data) => {
+                    res.redirect(`/healthly/${data._id}/home`);
+                });
+            });
+        });
+    });
+});
+
+//Delete Log
+router.delete('/deleteLog/:logId', (req, res) => {
+    Logs.findById(req.params.logId, (err, data) => {
+        let userId = data.owner;
+        Logs.findByIdAndRemove(data._id, (err, data) => {
+            res.redirect(`/healthly/${userId}/home`);
         });
     });
 });

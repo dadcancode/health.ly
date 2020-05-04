@@ -6,7 +6,8 @@ const logSchema = new Schema({
     notes: String,
     loggedWeight: { type: Number, required: true },
     difference: Number,
-    owner: String
+    owner: String,
+    prevWeight: Number
 }, { timestamps: true });
 
 const Log = mongoose.model('Log', logSchema);

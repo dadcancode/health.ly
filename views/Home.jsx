@@ -3,6 +3,7 @@ const React = require('react');
 class Home extends React.Component {
     render() {
         let user = this.props.user;
+        let logs = this.props.logs;
         return(
             <>
                 <div>
@@ -17,9 +18,10 @@ class Home extends React.Component {
                 <div>
                     <a href={`/healthly/${user._id}/new/log`}>New Entry</a>
                     <div>
-                        {user.logs.map((log, index) => {
+                        {logs.map((log, index) => {
+                            // console.log(log, index);
                             return(
-                            <div><span>{log.createdAt.toDateString()}</span><span><a href={`/healthly/${user._id}/view/${index}`}>{log.title}</a></span><span>{log.loggedWeight}lbs</span><span>{log.difference}</span></div>
+                            <div><span>{log.createdAt.toDateString()}</span><span><a href={`/healthly/view/${log._id}`}>{log.title}</a></span><span>{log.loggedWeight}lbs</span><span>{log.difference}</span></div>
                             )
                         })}
                     </div>

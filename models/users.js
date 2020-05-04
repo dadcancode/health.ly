@@ -9,13 +9,7 @@ const userSchema = new Schema({
     goalWeight: { type: Number, required: true },
     currentWeight: Number,
     gender: { type: String },
-    logs: [{
-        title: { type: String, required: true },
-        notes: String,
-        loggedWeight: { type: Number, required: true },
-        difference: Number,
-        createdAt: Date
-    }],
+    logs: [],
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
