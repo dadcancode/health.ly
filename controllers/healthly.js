@@ -21,10 +21,13 @@ router.get('/new/user', (req, res) => {
 //Create User
 router.post('/users', (req, res) => {
     req.body.currentWeight = req.body.startWeight;
-    Users.create(req.body, (err, data) => {
-        res.render('Home', {
-            user: data
-        });
+    Users.create(req.body, (err, data1) => {
+        Logs.find({ owner: data._id }, (err, data2) => {
+            res.render('Home', {
+                user: data1,
+                logs: data2
+            });
+        })
     });
 });
 
@@ -47,6 +50,29 @@ router.get('/:id/home', (req, res) => {
     });
 });
 
+//Edit User Profile
+router.get('/:id/editProfile', (req, res) => {
+    Users.findById(req.params.id, (err, data) => {
+        res.render('EditProfile', {
+            user: data
+        });
+    });
+});
+
+//Update User Profile
+router.put('/:id', (req, res) => {
+    Users.findByIdAndUpdate(req.params.id, {
+        $set: {
+            name: req.body.name,
+            avatar: req.body.avatar,
+            age: req.body.age,
+            goalWeight: req.body.goalWeight
+        }
+    }, () => {
+        res.redirect(`/healthly/${req.params.id}/home`);
+    });
+});
+
 //New Log
 router.get('/:id/new/log', (req, res) => {
     console.log('route')
@@ -58,7 +84,7 @@ router.get('/:id/new/log', (req, res) => {
 });
 
 //Create Log
-router.put('/:id/logs', (req, res) => {
+router.post('/:id/logs', (req, res) => {
     req.body.owner = req.params.id;
     Users.findById(req.params.id, (err, data) => {
         req.body.difference = (req.body.loggedWeight - data.currentWeight);
