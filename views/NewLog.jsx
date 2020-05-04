@@ -1,11 +1,13 @@
 const React = require('react');
+const Default = require('./layout/Default.jsx');
 
 class NewLog extends React.Component {
     render() {
         let user = this.props.user;
         return(
-            <>
-                <form action={`/healthly/${user._id}/logs?_method=PUT`} method="POST">
+            <Default>
+                <h3>New Log</h3>
+                <form action={`/healthly/${user._id}/logs`} method="POST">
                     <div>
                         <input type="text" name="title" placeholder="Enter Title"/>
                     </div>
@@ -17,7 +19,7 @@ class NewLog extends React.Component {
                     </div>
                     <input type="submit" value="Create Log"/>
                 </form>
-            </>
+            </Default>
         )
     }
 }

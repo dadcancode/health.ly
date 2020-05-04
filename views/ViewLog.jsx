@@ -1,10 +1,11 @@
 const React = require('react');
+const Default = require('./layout/Default.jsx');
 
 class ViewLog extends React.Component {
     render() {
         let log = this.props.log;
         return(
-            <>
+            <Default>
                 <p>{log.createdAt.toDateString()}</p>
                 <h3>{log.title}</h3>
                 <p>{log.loggedWeight}</p>
@@ -20,7 +21,7 @@ class ViewLog extends React.Component {
                     </form>
                 </div>
                 <a href={`/healthly/${log.owner}/home`}>Back</a>
-            </>
+            </Default>
         )
     }
 }

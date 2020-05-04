@@ -1,9 +1,10 @@
 const React = require('react');
+const Default = require('./layout/Default.jsx');
 
 class NewUser extends React.Component {
     render() {
         return(
-            <>
+            <Default>
                 <h1>Add New User</h1>
                 <form action="/healthly/users" method="POST">
                     <div>
@@ -31,7 +32,7 @@ class NewUser extends React.Component {
                     </div>
                     <input type="submit" name="" id="" value="Create User"/>
                 </form>
-            </>
+            </Default>
         );
     }
 }
