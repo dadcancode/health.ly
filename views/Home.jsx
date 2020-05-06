@@ -11,7 +11,7 @@ class Home extends React.Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-6">
-                            <img className="img-fluid" src={user.avatar} alt=""/>
+                            <img className="img-fluid" src={user.avatar} style={{borderRadius: "25px"}} alt=""/>
                         </div>
                         <div className="col-6 pt-3">
                             <h4 className="col-12 text-center homeText">{user.name}</h4>

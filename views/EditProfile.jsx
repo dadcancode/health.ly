@@ -6,6 +6,7 @@ class EditProfile extends React.Component {
         let user = this.props.user;
         return(
             <Default userId={user._id}>
+                <div className="container-fluid">
                 <h3 id="newUserTitleText">Edit Your Profile</h3>
                 <form id="newLogForm" action={`/healthly/${user._id}?_method=PUT`} method="POST">
                     <div className="form-group newUserFromInputDiv">
@@ -28,6 +29,8 @@ class EditProfile extends React.Component {
                         <input className="btn btn-outline-primary" id="newUserSubmit" type="submit" value="Save Changes"/>
                     </div>
                 </form>
+
+                </div>
             </Default>
         )
     }

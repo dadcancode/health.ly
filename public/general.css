@@ -3,19 +3,13 @@
     /* border: 2px solid gold; */
 }
 
-body {
-    height: 100vh;
-}
+
 
 /* Default */
 
 .titleText {
     font-size: 15vw;
     text-align: center;
-}
-
-#defaultBody {
-    height: 100vh;
 }
 
 /* Home Page */
@@ -89,15 +83,15 @@ body {
     height: 100%;
     width: 100%;
     font-size: 5vw;
-    margin-top: 7%;
+    margin-top: 5%;
 }
 
 /* New Log Page */
 
 #newLogForm {
     width: 90%;
-    height: 90%;
-    margin: 25% auto;
+    /* height: 90%; */
+    margin: 5% auto;
 }
 
 /* Edit Profile */
