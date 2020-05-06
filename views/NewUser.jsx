@@ -4,35 +4,62 @@ const Default = require('./layout/Default.jsx');
 class NewUser extends React.Component {
     render() {
         return(
-            <Default>
-                <h1>Add New User</h1>
-                <form action="/healthly/users" method="POST">
-                    <div>
-                        <input type="text" name="name" placeholder="Enter Name"/>
-                    </div>
-                    <div>
-                        <input type="text" name="avatar" placeholder="Avatar, ex. https://example.jpg"/>
-                    </div>
-                    <div>
-                        <input type="number" name="age" placeholder="Age"/>
-                    </div>
-                    <div>
-                        <input type="number" name="startWeight" placeholder="Starting Weight"/>
-                    </div>
-                    <div>
-                        <input type="number" name="goalWeight" placeholder="Goal Weight"/>
-                    </div>
-                    <div>
-                        <input type="radio" name="gender" id="maleRadio" value="male"/>
-                        <label htmlFor="maleRadio">Male</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="gender" id="femaleRadio" value="female"/>
-                        <label htmlFor="femaleRadio">Female</label>
-                    </div>
-                    <input type="submit" name="" id="" value="Create User"/>
-                </form>
-            </Default>
+            <html lang="en" dir="ltr">
+                <head>
+                    <meta charSet="utf-8"/>
+                    {/* <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta> */}
+
+
+                    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link>
+
+                    <link rel="stylesheet" href="/general.css"/>
+
+                    <title>{this.props.title}</title>
+
+                </head>
+                <body>
+                    <div className="d-flex" style={{backgroundColor: "blue", height: "7vh"}}></div>
+                    <h3 id="newUserTitleText">Add New User</h3>
+                    <form id="addNewUserForm" action="/healthly/users" method="POST">
+                        <div className="form-group newUserFromInputDiv">
+                            <input className="form-control newUserFromInput" type="text" name="name" placeholder="Enter Name"/>
+                        </div>
+
+                        <div className="form-group newUserFromInputDiv">
+                            <input className="form-control newUserFromInput" type="text" name="avatar" placeholder="Avatar, ex. https://example.jpg"/>
+                        </div>
+
+                        <div className="form-group newUserFromInputDiv">
+                            <input className="form-control newUserFromInput" type="number" name="age" placeholder="Age"/>
+                        </div>
+
+                        <div className="form-group newUserFromInputDiv">
+                            <input className="form-control newUserFromInput" type="number" name="startWeight" placeholder="Starting Weight"/>
+                        </div>
+
+                        <div className="form-group newUserFromInputDiv">
+                            <input className="form-control newUserFromInput" type="number" name="goalWeight" placeholder="Goal Weight"/>
+                        </div>
+
+                        {/* <div className="form-check form-check-inline newUserFromInputDiv">
+                            <input className="form-check-input newUserFromInputRadio" type="radio" name="gender" id="maleRadio" value="male"/>
+                            <label className="form-check-label" htmlFor="maleRadio">Male</label>
+                        </div>
+
+                        <div className="form-check form-check-inline" style={{height: "100px"}}>
+                            <input className="form-check-input" type="radio" name="gender" id="femaleRadio" value="female"/>
+                            <label className="form-check-label" htmlFor="femaleRadio">Female</label>
+                        </div> */}
+
+                        <div className="newUserFromInputDiv">
+                            <input className="btn btn-outline-primary" type="submit" name="" id="newUserSubmit" value="Create User"/>
+                        </div>
+
+                        
+                    </form>
+                </body>
+            </html>
+            
         );
     }
 }

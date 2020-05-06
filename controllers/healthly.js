@@ -73,6 +73,23 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//Delete User Profile
+router.get('/deleteUser/:id', (req, res) => {
+    Users.findById(req.params.id, (err, data) => {
+        res.render('DeleteProfile', {
+            user: data
+        });
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    Logs.remove({ owner: req.params.id }, () => {
+        Users.findByIdAndRemove(req.params.id, () => {
+            res.redirect('/healthly');
+        });
+    });
+});
+
 //New Log
 router.get('/:id/new/log', (req, res) => {
     console.log('route')
@@ -90,7 +107,10 @@ router.post('/:id/logs', (req, res) => {
         req.body.difference = (req.body.loggedWeight - data.currentWeight);
         req.body.prevWeight = data.currentWeight;
         Logs.create(req.body, (err, data) => {
-            res.redirect(`/healthly/${data.owner}/home`);
+            let userID = data.owner;
+            Users.findByIdAndUpdate(data.owner, { currentWeight: data.loggedWeight }, () => {
+                res.redirect(`/healthly/${userID}/home`);
+            })
         });
     });
 });
@@ -138,9 +158,11 @@ router.put('/:logId', (req, res) => {
 //Delete Log
 router.delete('/deleteLog/:logId', (req, res) => {
     Logs.findById(req.params.logId, (err, data) => {
-        let userId = data.owner;
-        Logs.findByIdAndRemove(data._id, (err, data) => {
-            res.redirect(`/healthly/${userId}/home`);
+        let userId = data.owner
+        Users.findByIdAndUpdate(userId, { currentWeight: data.prevWeight }, () => {
+            Logs.findByIdAndRemove(req.params.logId, (err, data) => {
+                res.redirect(`/healthly/${userId}/home`);
+            });
         });
     });
 });

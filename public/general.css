@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    /* border: 2px solid gold; */
+}
+
+body {
+    height: 100vh;
+}
+
+/* Default */
+
+.titleText {
+    font-size: 15vw;
+    text-align: center;
+}
+
+#defaultBody {
+    height: 100vh;
+}
+
+/* Home Page */
+
+.homeText {
+    font-size: 5em;
+    margin-bottom: 30%;
+}
+
+#progressBarDiv {
+    height: 70px;
+}
+
+#newLogEntryLinkDiv {
+    height: 7%;
+}
+
+#newLogEntryLink {
+    font-size: 2.5em;
+    border-radius: 15px;
+}
+
+#logDiv {
+    overflow: auto;
+    height: 30vh;
+}
+
+.logEntryText {
+    font-size: 1.75em;
+}
+
+#logEntryTitleText {
+    font-size: 2em;
+}
+
+/* Login Page */
+
+#loginTitleDiv {
+    margin-bottom: 30%;
+}
+
+#loginTitleText {
+    font-size: 25vw;
+}
+
+/* Add New User Page */
+
+#newUserTitleText {
+    font-size: 15vw;
+    text-align: center;
+}
+
+#addNewUserForm {
+    width: 90%;
+    height: 90%;
+    margin: 15% auto;
+}
+
+.newUserFromInputDiv {
+    height: 7%;
+    margin-bottom: 7%;
+}
+
+.newUserFromInput {
+    height: 100%;
+    font-size: 5vw;
+    background-color: aquamarine;
+}
+
+#newUserSubmit {
+    height: 100%;
+    width: 100%;
+    font-size: 5vw;
+    margin-top: 7%;
+}
+
+/* New Log Page */
+
+#newLogForm {
+    width: 90%;
+    height: 90%;
+    margin: 25% auto;
+}
+
+/* Edit Profile */
+
+.formLabel {
+    font-size: 3vw;
+}
+
+/* View Log */
+
+.viewLogText {
+    font-size: 6vw;
+    text-align: center;
+}
+
+#viewLogNotesText {
+    font-size: 4vw;
+}
+
+#viewLogNotes {
+    font-size: 6vw;
+}
+
+.btn {
+    border-radius: 25px;
+}

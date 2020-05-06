@@ -8,7 +8,7 @@ const userSchema = new Schema({
     startWeight: { type: Number, required: true },
     goalWeight: { type: Number, required: true },
     currentWeight: Number,
-    gender: { type: String },
+    // gender: { type: String },
     logs: [],
 }, { timestamps: true });
 
