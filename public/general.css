@@ -118,3 +118,13 @@
 .btn {
     border-radius: 25px;
 }
+
+/* Delete Profile Page */
+
+.smallText {
+    font-size: 6vw;
+}
+
+#deletePageTitleDiv {
+    margin-bottom: 25%;
+}

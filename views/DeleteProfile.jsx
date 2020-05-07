@@ -20,12 +20,18 @@ class DeleteProflie extends React.Component {
                     <div className="d-flex" style={{backgroundColor: "blue", height: "7vh"}}>
 
                     </div>
-                    <div>
-                        <h3>Are you sure?</h3>
-                        <p>Deleting your profile will also delete all of your current log entries, would you still like to proceed?</p>
-                        <form action={`/healthly/${user._id}?_method=DELETE`} method="POST">
-                            <input type="submit" value="Delete"/>
-                        </form>
+                    <div className="container-fluid">
+                        <div className="row" id="deletePageTitleDiv">
+                            <h3 className="titleText col-12">Are you sure?</h3>
+                        </div>
+                        <div className="row justify-content-center">
+                            <p className="smallText col-10 text-center">Deleting your profile will also delete all of your current log entries, would you still like to proceed?</p>
+                        </div>
+                        <div className="row justify-content-center">
+                            <form className="col-10" action={`/healthly/${user._id}?_method=DELETE`} method="POST">
+                                <input className="btn btn-danger w-100" type="submit" value="Delete"/>
+                            </form>
+                        </div>
                         <a href={`/healthly/${user._id}/home`}>Cancel</a>
                     </div>
                 </body>

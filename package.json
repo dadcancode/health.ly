@@ -1,10 +1,14 @@
 {
+  "engines": {
+    "node": "12.16.2"
+  },
   "name": "health.ly",
   "version": "1.0.0",
   "description": "Weight tracker",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
