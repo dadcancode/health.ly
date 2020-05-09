@@ -19,7 +19,7 @@ class Default extends React.Component {
 
 
                 <body className="container-fluid">
-                    <div className="d-flex" style={{backgroundColor: "blue", height: "7vh"}}>
+                    <div className="d-flex rounded-bottom" style={{backgroundImage: "linear-gradient(to top, #00c6fb 0%, #005bea 100%)", height: "7vh"}}>
 
                         {/* Dropdown Menu */}
 
@@ -28,6 +28,7 @@ class Default extends React.Component {
                                 <img className="img-fluid" style={{height: "100%", width: "100%"}} src="https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/19339625881548233621-512.png" alt=""/>
                             </a>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a className="dropdown-item" href={`/healthly/${this.props.userId}/home`}>Home</a>
                                 <a className="dropdown-item" href={`/healthly/${this.props.userId}/editProfile`}>Edit Profile</a>
                                 <a className="dropdown-item" href={`/healthly/deleteUser/${this.props.userId}`}>Delete Profile</a>
                                 <a className="dropdown-item" href='/healthly'>Logout</a>

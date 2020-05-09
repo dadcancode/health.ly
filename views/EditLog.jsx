@@ -6,18 +6,20 @@ class EditLog extends React.Component {
         let log = this.props.log;
         return(
             <Default>
-                <h3>Edit Log</h3>
-                <form action={`/healthly/${log._id}?_method=PUT`} method="POST">
-                    <div>
-                        <input type="text" name="title" value={log.title}/>
+                <h3 className="titleText" style={{marginBottom: "35vw"}}>Edit Log</h3>
+                <form id="addNewUserForm" action={`/healthly/update/${log._id}?_method=PUT`} method="POST">
+                    <div className="form-group newUserFromInputDiv">
+                        <input className="form-control newUserFromInput" type="text" name="title" value={log.title}/>
                     </div>
-                    <div>
-                        <input type="number" name="loggedWeight" value={log.loggedWeight}/>
+                    <div className="form-group newUserFromInputDiv">
+                        <input className="form-control newUserFromInput" type="number" name="loggedWeight" value={log.loggedWeight}/>
                     </div>
-                    <div>
-                        <input type="text" name="notes" value={log.notes}/>
+                    <div className="form-group newUserFromInputDiv">
+                        <input className="form-control newUserFromInput" type="text" name="notes" value={log.notes}/>
                     </div>
-                    <input type="submit" value="Save Changes"/>
+                    <div className="newUserFromInputDiv">
+                        <input className="btn btn-outline-primary" id="newUserSubmit" type="submit" value="Save Changes"/>
+                    </div>
                 </form>
             </Default>
         )

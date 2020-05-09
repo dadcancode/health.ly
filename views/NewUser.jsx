@@ -18,7 +18,7 @@ class NewUser extends React.Component {
 
                 </head>
                 <body>
-                    <div className="d-flex" style={{backgroundColor: "blue", height: "7vh"}}></div>
+                    <div className="d-flex" style={{backgroundImage: "linear-gradient(to top, #00c6fb 0%, #005bea 100%)", height: "7vh"}}></div>
                     <h3 id="newUserTitleText">Add New User</h3>
                     <form id="addNewUserForm" action="/healthly/users" method="POST">
                         <div className="form-group newUserFromInputDiv">

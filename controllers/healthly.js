@@ -22,7 +22,7 @@ router.get('/new/user', (req, res) => {
 router.post('/users', (req, res) => {
     req.body.currentWeight = req.body.startWeight;
     Users.create(req.body, (err, data1) => {
-        Logs.find({ owner: data._id }, (err, data2) => {
+        Logs.find({ owner: data1._id }, (err, data2) => {
             res.render('Home', {
                 user: data1,
                 logs: data2
@@ -41,6 +41,7 @@ router.get('/user/home', (req, res) => {
 router.get('/:id/home', (req, res) => {
     Users.findById(req.params.id, (err, data) => {
         let user = data;
+        console.log('>>>>>>>>>>>>', user._id);
         Logs.find({ owner: user._id }, (err, data) => {
             res.render('Home', {
                 user: user,
@@ -117,6 +118,7 @@ router.post('/:id/logs', (req, res) => {
 
 //View Log
 router.get('/view/:logId', (req, res) => {
+    console.log('log viewed')
     Logs.findById(req.params.logId, (err, data) => {
         res.render('ViewLog', {
             log: data
@@ -134,8 +136,10 @@ router.get('/edit/log/:logId', (req, res) => {
     });
 });
 //Update Log
-router.put('/:logId', (req, res) => {
+router.put('/update/:logId', (req, res) => {
+    console.log('>>>>>>>>>>> went thru put route')
     let update = req.body;
+    console.log('>>>>>>>>>> req.body:', req.body)
     Logs.findById(req.params.logId, (err, data) => {
         update.difference = update.loggedWeight - data.prevWeight;
         Logs.findByIdAndUpdate(data._id, {
@@ -147,10 +151,9 @@ router.put('/:logId', (req, res) => {
             }
         }, (err, data) => {
             Logs.findById(req.params.logId, (err, data) => {
-                Users.findById(data.owner, (err, data) => {
-                    res.redirect(`/healthly/${data._id}/home`);
-                });
-            });
+                console.log('>>>>>>>>> data.owner:', data.owner)
+                res.redirect(`/healthly/${data.owner}/home`)
+            })
         });
     });
 });

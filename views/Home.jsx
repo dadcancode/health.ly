@@ -9,17 +9,17 @@ class Home extends React.Component {
         return(
             <Default userId={user._id}>
                 <div className="container-fluid">
-                    <div className="row">
+                    <div className="row" style={{marginBottom: "5vw"}}>
                         <div className="col-6">
-                            <img className="img-fluid" src={user.avatar} style={{borderRadius: "25px"}} alt=""/>
+                            <img src={user.avatar} style={{borderRadius: "25px", height: "100%", width: "100%"}} alt=""/>
                         </div>
                         <div className="col-6 pt-3">
                             <h4 className="col-12 text-center homeText">{user.name}</h4>
                             <p className="col-12 text-center homeText">
                                 {user.currentWeight > user.startWeight ? `+${user.startWeight - user.currentWeight}lbs` : user.currentWeight < user.startWeight ? `${user.currentWeight - user.startWeight}lbs` : '0lbs'}
                             </p>
-                            <div class="progress col-12" id="progressBarDiv">
-                                <div class="progress-bar" role="progressbar" style={{width: `${progressPer}%`, fontSize: "3vw"}} aria-valuenow={`${progressPer}`} aria-valuemin="0" aria-valuemax="100">{Math.floor(progressPer)}%</div>
+                            <div className="progress col-12" id="progressBarDiv">
+                                <div className="progress-bar" role="progressbar" style={{width: `${progressPer}%`, fontSize: "3vw", borderRadius: "15px"}} aria-valuenow={`${progressPer}`} aria-valuemin="0" aria-valuemax="100">{Math.floor(progressPer)}%</div>
                             </div>
                         </div>
                     </div>
@@ -27,8 +27,8 @@ class Home extends React.Component {
                         <a className="btn btn-secondary d-flex align-items-center justify-content-center" href={`/healthly/${user._id}/new/log`} id="newLogEntryLink">New Entry</a>
                     </div>
                     <div className="row">
-                        <div className="col-12 d-flex flex-column-reverse p-2" id="logDiv">
-                            {logs.map((log, index) => {
+                        <div className="col-12 d-flex flex-column p-2" id="logDiv">
+                            {logs.slice(0).reverse().map((log, index) => {
                                 // console.log(log, index);
                                 return(
                                 <div className="row justify-content-center mb-2" id="logEntryDiv">
