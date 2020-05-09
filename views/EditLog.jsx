@@ -5,7 +5,7 @@ class EditLog extends React.Component {
     render() {
         let log = this.props.log;
         return(
-            <Default>
+            <Default userId={log.owner}>
                 <h3 className="titleText" style={{marginBottom: "35vw"}}>Edit Log</h3>
                 <form id="addNewUserForm" action={`/healthly/update/${log._id}?_method=PUT`} method="POST">
                     <div className="form-group newUserFromInputDiv">

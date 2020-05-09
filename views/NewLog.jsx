@@ -5,7 +5,7 @@ class NewLog extends React.Component {
     render() {
         let user = this.props.user;
         return(
-            <Default title='New Log'>
+            <Default title='New Log' userId={user._id}>
                 {/* <h3>New Log</h3> */}
                 <form id="newLogForm" action={`/healthly/${user._id}/logs`} method="POST">
                     <div className="form-group newUserFromInputDiv">

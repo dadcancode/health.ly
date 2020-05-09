@@ -5,7 +5,7 @@ class ViewLog extends React.Component {
     render() {
         let log = this.props.log;
         return(
-            <Default>
+            <Default userId={log.owner}>
                 <div className="container-fluid">
                     <div className="row justify-content-center">
                         <p className="col-8 viewLogText my-3">{log.createdAt.toDateString()}</p>
