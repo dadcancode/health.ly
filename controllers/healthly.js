@@ -5,7 +5,7 @@ const Logs = require('../models/logs.js');
 
 //routes
 //Login
-router.get('/healthly', (req, res) => {
+router.get('/', (req, res) => {
     Users.find({}, (err, data) => {
         res.render('Login', {
             users: data
