@@ -18,7 +18,7 @@ class Default extends React.Component {
                 </head>
 
 
-                <body className="container-fluid">
+                <body className="container-fluid" style={{backgroundImage: "linear-gradient( 109.6deg,  rgba(237,246,250,1) 11.2%, rgba(204,228,247,1) 100.2% )", height: "100vh"}}>
                     <div className="d-flex rounded-bottom" style={{backgroundImage: "linear-gradient(to top, #00c6fb 0%, #005bea 100%)", height: "7vh"}}>
 
                         {/* Dropdown Menu */}

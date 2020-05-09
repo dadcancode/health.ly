@@ -16,7 +16,7 @@ class DeleteProflie extends React.Component {
                     <title>{this.props.title}</title>
 
                 </head>
-                <body>
+                <body style={{backgroundImage: "linear-gradient( 109.6deg,  rgba(237,246,250,1) 11.2%, rgba(204,228,247,1) 100.2% )", height: "100vh"}}>
                     <div className="d-flex" style={{backgroundImage: "linear-gradient(to top, #00c6fb 0%, #005bea 100%)", height: "7vh"}}>
 
                     </div>

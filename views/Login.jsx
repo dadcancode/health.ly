@@ -17,7 +17,7 @@ class Login extends React.Component {
                     <title>{this.props.title}</title>
 
                 </head>
-                <body className="container-fluid">
+                <body className="container-fluid" style={{backgroundImage: "linear-gradient( 109.6deg,  rgba(237,246,250,1) 11.2%, rgba(204,228,247,1) 100.2% )", height: "100vh"}}>
                     <div id="loginTitleDiv">
                         <h1 className="" id="loginTitleText">Healthly</h1>
                     </div>
